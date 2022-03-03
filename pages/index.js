@@ -62,6 +62,7 @@ export default function Home() {
               max='300'
               className={styles.slider}
             ></input>
+            <p>{recipe.sizeOfPizza}</p>
           </section>
 
           <section className={styles.card}>
@@ -75,11 +76,7 @@ export default function Home() {
               max='75'
               className={styles.slider}
             ></input>
-            {/* <p>
-              The more water you add the stickier the dough will be. Even though
-              it's hard to handle at first it definitely make your pizza's a lot
-              tastier. Specially if you are baking your pie in a home oven.
-            </p> */}
+            <p>{recipe.hydration}</p>
           </section>
         </div>
 
