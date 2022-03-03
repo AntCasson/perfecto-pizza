@@ -6,7 +6,7 @@
     "start_url": "/",
     "name": "Pizza Plotter 2.0",
     "short_name": "PiePlotter",
-    "description": "Get ready for some pizza pie that is restaurant quality but my in your home kitchen. Mama Mia. ",
+    "description": "Bake pizza in just a few steps. With easy to follow recipe and hardcore mode for fanatics.",
     "icons": [
         {
             "src": "/icon-192x192.png",
@@ -27,6 +27,13 @@
             "src": "/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+
         }
     ]
 }
