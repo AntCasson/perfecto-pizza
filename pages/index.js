@@ -16,7 +16,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Let's make some <span className={styles.textAccent}>PIZZA</span>!
+          PizzaPlotter <code>2.0</code>
         </h1>
 
         <p className={styles.description}>
