@@ -1,48 +1,70 @@
 .container {
-  padding: 0 2rem;
   background-image: radial-gradient(
-    circle at 50% -250%,
-    #374151,
-    #111827,
-    #000
-  );
+      circle at top right,
+      hsl(150 100% 50%),
+      hsl(150 100% 50% / 0%)
+    ),
+    radial-gradient(
+      circle at bottom left,
+      hsl(150 100% 84%),
+      hsl(150 100% 84% / 0%)
+    );
 }
 
 .main {
-  min-height: 100vh;
-  padding: 4em 0;
+  height: 100vh;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  color: var(--dark-clr);
+}
+
+.header {
+  margin-block-start: 0;
+  margin-block-end: 2em;
+  padding-block-end: 1em;
+  width: 100%;
+  background-color: var(--dark-clr);
+  clip-path: polygon(0 0, 100% 0, 100% 87%, 0 100%);
 }
 
 .footer {
   display: flex;
   flex: 1;
-  padding: 2em 0;
-  border-top: 1px solid var(--pri-clr);
+
+  width: 100%;
+  height: 4rem;
+  background-color: var(--dark-clr);
   justify-content: center;
   align-items: center;
+  clip-path: polygon(0 30%, 100% 10%, 100% 100%, 0% 100%);
 }
 
 .footer a {
   display: flex;
   justify-content: center;
+  font-size: 0.8rem;
+  color: var(--bg-clr);
+}
+
+.footer a:hover,
+.footer a:focus {
+  color: var(--accent-clr);
 }
 
 .title {
   margin-top: 0.35em;
   margin-bottom: 0.125em;
   line-height: 1.2;
-  font-size: 4rem;
+  font-size: 3rem;
   background: linear-gradient(
     -90deg,
-    var(--accent-clr),
+    var(--bg-clr),
     var(--accent-clr),
     var(--bg-clr),
-    var(--accent-clr)
+    var(--bg-clr)
   );
   background-size: 300%;
   font-family: Arial, Helvetica, sans-serif;
@@ -69,6 +91,7 @@
 
 .title,
 .description {
+  color: var(--light-clr);
   text-align: center;
 }
 
@@ -78,12 +101,11 @@
 
 .description {
   margin-top: 0.325em;
-  margin-bottom: 1.5em;
-  font-size: 1.375rem;
+  margin-bottom: 1em;
+  font-size: 1.125rem;
 }
 
 .code {
-  border-radius: 5px;
   padding: 0.75em;
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
@@ -96,18 +118,23 @@
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
+  gap: 2em;
 }
 
 .card {
-  margin: 1em;
   padding: 2em;
   text-align: left;
-  color: inherit;
+  color: var(--light-clr);
+  min-width: 300px;
+  width: 300px;
+  max-width: 400px;
+  height: 150px;
   text-decoration: none;
-  border: 1px solid var(--dark-clr);
+  background-color: var(--dark-clr);
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .card:hover,
@@ -138,4 +165,35 @@
     width: 100%;
     flex-direction: column;
   }
+}
+/* sliders  */
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: var(--light-clr);
+  outline: none;
+
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--bg-clr);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
 }
