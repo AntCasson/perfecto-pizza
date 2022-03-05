@@ -12,7 +12,7 @@
 }
 
 .main {
-  height: 100vh;
+  min-height: 100vh;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -93,6 +93,7 @@
 .description {
   color: var(--light-clr);
   text-align: center;
+  animation: var(--animation-fade-in) forwards;
 }
 
 .textAccent {
@@ -122,7 +123,7 @@
 }
 
 .card {
-  padding: 2em;
+  padding: var(--size-fluid-3);
   text-align: left;
   color: var(--light-clr);
   min-width: 300px;
@@ -131,7 +132,7 @@
   height: 150px;
   text-decoration: none;
   background-color: var(--dark-clr);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   transition: color 0.15s ease, border-color 0.15s ease;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -196,4 +197,14 @@
   border: 0;
   border-radius: 50%;
   cursor: pointer;
+}
+
+/* recipe css */
+
+.recipe__wrapper {
+  margin-bottom: 3em;
+  background-color: var(--dark-clr);
+  color: var(--yellow-1);
+  border-radius: 0.625rem;
+  padding: var(--size-fluid-3);
 }
