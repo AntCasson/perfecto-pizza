@@ -90,7 +90,7 @@ export default function Home() {
               value={hydration}
               min='60'
               max='70'
-              step={1}
+              step={2}
               className={styles.slider}
             ></input>
             <p>{recipe.hydration}</p>
@@ -107,20 +107,33 @@ export default function Home() {
             hours, before you want to eat the pizza pie.
           </p>
           <ul className='style.recipe__steps'>
-            <li className='style.recipe__step'>
-              Put water and yeast into large bowl.
+            <li className={styles.recipe__step}>
+              Put{" "}
+              {(
+                (((hydration / 100) * totalDoughSize * hydration) / 100) *
+                numberOfPizzas
+              ).toFixed(0)}{" "}
+              grams of water and {(numberOfPizzas * 0.1).toFixed(1)} grams of
+              yeast into large bowl.
             </li>
-            <li className='style.recipe__step'>
-              Mix salt and flour separately and add to large bowl.
+
+            {/* FLOUR weight needs fixing */}
+            <li className={styles.recipe__step}>
+              Mix {numberOfPizzas * 2.5} grams of salt and{" "}
+              {(((hydration * totalDoughSize) / 100) * numberOfPizzas).toFixed(
+                0
+              )}{" "}
+              grams of flour separately and add to large bowl.
             </li>
-            <li className='style.recipe__step'>
+            <li className={styles.recipe__step}>
               Mix everything together for 1 minute with big spoon or by hand.
               Now wait for 20 minutes so that it's gets bit less sticky.
             </li>
-            <li className='style.recipe__step'>
+            <li className={styles.recipe__step}>
               Now knead the dough for a 10 minutes until it looks like a big
-              ball of mozzarella. Divided into {numberOfPizzas} balls and let it
-              rest for 18 to 24 hours.
+              ball of mozzarella. Divided into {numberOfPizzas}{" "}
+              {numberOfPizzas > 1 ? "balls" : "ball"} and let it rest for 18 to
+              24 hours.
             </li>
           </ul>
         </div>

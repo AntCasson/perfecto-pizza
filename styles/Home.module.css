@@ -202,9 +202,14 @@
 /* recipe css */
 
 .recipe__wrapper {
-  margin-bottom: 3em;
-  background-color: var(--dark-clr);
-  color: var(--yellow-1);
-  border-radius: 0.625rem;
+  margin: var(--size-fluid-3);
   padding: var(--size-fluid-3);
+  max-width: var(--size-content-3);
+  background-color: var(--dark-clr);
+  color: var(--yellow-0);
+  border-radius: 0.625rem;
+}
+
+.recipe__step {
+  margin-block: var(--size-3);
 }
