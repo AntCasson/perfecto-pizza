@@ -1,20 +1,35 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const [recipe, setRecipe] = useState({
-    numberOfPizzas: 2,
-    sizeOfPizza: 125,
+    numberOfPizzas: 1,
+    totalDoughSize: 250,
+    pizzaSize: "small",
     hydration: 60
   });
+
+  const { numberOfPizzas, totalDoughSize, pizzaSize, hydration } = recipe;
 
   const onChange = e => {
     const name = e.target.name;
     const value = e.target.value;
     setRecipe(prev => ({ ...prev, [name]: value }));
   };
+
+  useEffect(() => {
+    if (totalDoughSize < 300) {
+      setRecipe(prev => ({ ...prev, pizzaSize: "small" }));
+    }
+    if (totalDoughSize >= 300) {
+      setRecipe(prev => ({ ...prev, pizzaSize: "medium" }));
+    }
+    if (totalDoughSize > 325) {
+      setRecipe(prev => ({ ...prev, pizzaSize: "large" }));
+    }
+  }, [totalDoughSize]);
 
   return (
     <div className={styles.container}>
@@ -43,12 +58,12 @@ export default function Home() {
               onChange={onChange}
               type='range'
               name='numberOfPizzas'
-              value={recipe.numberOfPizzas}
+              value={numberOfPizzas}
               min='1'
               max='6'
               className={styles.slider}
             ></input>
-            <p>{recipe.numberOfPizzas}</p>
+            <p>{numberOfPizzas}</p>
           </section>
 
           <section className={styles.card}>
@@ -56,13 +71,14 @@ export default function Home() {
             <input
               onChange={onChange}
               type='range'
-              name='sizeOfPizza'
-              value={recipe.sizeOfPizza}
-              min='100'
-              max='300'
+              name='totalDoughSize'
+              value={totalDoughSize}
+              min='250'
+              max='350'
+              step={25}
               className={styles.slider}
             ></input>
-            <p>{recipe.sizeOfPizza}</p>
+            <p>{totalDoughSize}</p>
           </section>
 
           <section className={styles.card}>
@@ -71,16 +87,43 @@ export default function Home() {
               onChange={onChange}
               type='range'
               name='hydration'
-              value={recipe.hydration}
+              value={hydration}
               min='60'
-              max='75'
+              max='70'
+              step={1}
               className={styles.slider}
             ></input>
             <p>{recipe.hydration}</p>
           </section>
         </div>
 
-        <div className='recipe__wrapper'></div>
+        <div className={styles.recipe__wrapper}>
+          <h2 className='style.recipe__title'>
+            Recipe for {numberOfPizzas} {pizzaSize}{" "}
+            {numberOfPizzas > 1 ? "pizza's!" : "pizza pie!"}
+          </h2>
+          <p className='style.recipe__subtitle'>
+            To get the best results make the dough one day, or at least 18
+            hours, before you want to eat the pizza pie.
+          </p>
+          <ul className='style.recipe__steps'>
+            <li className='style.recipe__step'>
+              Put water and yeast into large bowl.
+            </li>
+            <li className='style.recipe__step'>
+              Mix salt and flour separately and add to large bowl.
+            </li>
+            <li className='style.recipe__step'>
+              Mix everything together for 1 minute with big spoon or by hand.
+              Now wait for 20 minutes so that it's gets bit less sticky.
+            </li>
+            <li className='style.recipe__step'>
+              Now knead the dough for a 10 minutes until it looks like a big
+              ball of mozzarella. Divided into {numberOfPizzas} balls and let it
+              rest for 18 to 24 hours.
+            </li>
+          </ul>
+        </div>
       </main>
 
       <footer className={styles.footer}>
