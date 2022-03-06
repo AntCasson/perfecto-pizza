@@ -6,27 +6,39 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   const [recipe, setRecipe] = useState({
     numberOfPizzas: 1,
-    totalDoughSize: 250,
+    totalDoughSize: 150,
     pizzaSize: "small",
-    hydration: 60
+    poolish: 50,
+    hydration: 60,
+    waterWeight: 45
   });
 
-  const { numberOfPizzas, totalDoughSize, pizzaSize, hydration } = recipe;
+  const { numberOfPizzas, totalDoughSize, pizzaSize, hydration, poolish } =
+    recipe;
 
   const onChange = e => {
     const name = e.target.name;
     const value = e.target.value;
     setRecipe(prev => ({ ...prev, [name]: value }));
+    setRecipe(prev => ({
+      ...prev,
+      waterWeight:
+        ((hydration / 100) * totalDoughSize).toFixed(0) * numberOfPizzas
+    }));
+    setRecipe(prev => ({
+      ...prev,
+      poolish: Math.round((totalDoughSize / 3) * numberOfPizzas)
+    }));
   };
 
   useEffect(() => {
-    if (totalDoughSize < 300) {
+    if (totalDoughSize < 150) {
       setRecipe(prev => ({ ...prev, pizzaSize: "small" }));
     }
-    if (totalDoughSize >= 300) {
+    if (totalDoughSize >= 155) {
       setRecipe(prev => ({ ...prev, pizzaSize: "medium" }));
     }
-    if (totalDoughSize > 325) {
+    if (totalDoughSize > 175) {
       setRecipe(prev => ({ ...prev, pizzaSize: "large" }));
     }
   }, [totalDoughSize]);
@@ -68,17 +80,21 @@ export default function Home() {
 
           <section className={styles.card}>
             <h2>What size?</h2>
+
             <input
               onChange={onChange}
               type='range'
               name='totalDoughSize'
               value={totalDoughSize}
-              min='250'
-              max='350'
-              step={25}
+              min='130'
+              max='200'
+              step={5}
               className={styles.slider}
             ></input>
-            <p>{totalDoughSize}</p>
+            <p>
+              {totalDoughSize / 5} cm /{" "}
+              {Math.round((totalDoughSize / 5) * 0.39)} inch
+            </p>
           </section>
 
           <section className={styles.card}>
@@ -103,27 +119,33 @@ export default function Home() {
             {numberOfPizzas > 1 ? "pizza's!" : "pizza pie!"}
           </h2>
           <p className='style.recipe__subtitle'>
-            To get the best results make the dough one day, or at least 18
-            hours, before you want to eat the pizza pie.
+            Make poolish one day, or at least 18 hours, before you want to eat
+            the pizza pie. This gives the best and tastiest results. It's a
+            really easy step that makes your pizza pie eating experience much
+            better.
           </p>
-          <ul className='style.recipe__steps'>
+          <h3>Day before pizza prep</h3>
+          <ol>
+            <li>Get a food container and put it on your scale</li>
+            <li>
+              Take {poolish} grams of flour and {poolish} grams of water.
+            </li>
+            <li>
+              Add a {1 * numberOfPizzas} grams of honey and instant dried yeast.
+            </li>
+          </ol>
+
+          <ol className='style.recipe__steps'>
             <li className={styles.recipe__step}>
-              Put{" "}
-              {(
-                (((hydration / 100) * totalDoughSize * hydration) / 100) *
-                numberOfPizzas
-              ).toFixed(0)}{" "}
-              grams of water and {(numberOfPizzas * 0.1).toFixed(1)} grams of
-              yeast into large bowl.
+              Put {recipe.waterWeight - poolish} grams of water and{" "}
+              {(numberOfPizzas * 0.1).toFixed(1)} grams of yeast into large
+              bowl.
             </li>
 
-            {/* FLOUR weight needs fixing */}
             <li className={styles.recipe__step}>
-              Mix {numberOfPizzas * 2.5} grams of salt and{" "}
-              {(((hydration * totalDoughSize) / 100) * numberOfPizzas).toFixed(
-                0
-              )}{" "}
-              grams of flour separately and add to large bowl.
+              Mix {numberOfPizzas * 3.5} grams of salt and{" "}
+              {totalDoughSize * numberOfPizzas - poolish} grams of flour
+              separately and add to large bowl.
             </li>
             <li className={styles.recipe__step}>
               Mix everything together for 1 minute with big spoon or by hand.
@@ -135,7 +157,7 @@ export default function Home() {
               {numberOfPizzas > 1 ? "balls" : "ball"} and let it rest for 18 to
               24 hours.
             </li>
-          </ul>
+          </ol>
         </div>
       </main>
 
