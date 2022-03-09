@@ -1,14 +1,5 @@
 .container {
-  background-image: radial-gradient(
-      circle at top right,
-      hsl(150 100% 50%),
-      hsl(150 100% 50% / 0%)
-    ),
-    radial-gradient(
-      circle at bottom left,
-      hsl(150 100% 84%),
-      hsl(150 100% 84% / 0%)
-    );
+  background-image: var(--gradient-4);
 }
 
 .main {

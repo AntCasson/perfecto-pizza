@@ -8,28 +8,20 @@ export default function Home() {
     numberOfPizzas: 1,
     totalDoughSize: 150,
     pizzaSize: "small",
-    poolish: 50,
-    hydration: 60,
-    waterWeight: 45
+
+    hydration: 0.6
   });
 
-  const { numberOfPizzas, totalDoughSize, pizzaSize, hydration, poolish } =
-    recipe;
+  const { numberOfPizzas, totalDoughSize, pizzaSize, hydration } = recipe;
 
   const onChange = e => {
     const name = e.target.name;
     const value = e.target.value;
     setRecipe(prev => ({ ...prev, [name]: value }));
-    setRecipe(prev => ({
-      ...prev,
-      waterWeight:
-        ((hydration / 100) * totalDoughSize).toFixed(0) * numberOfPizzas
-    }));
-    setRecipe(prev => ({
-      ...prev,
-      poolish: Math.round((totalDoughSize / 3) * numberOfPizzas)
-    }));
   };
+
+  const waterWeight = Math.round(totalDoughSize * hydration * numberOfPizzas);
+  const flourWeight = Math.round(totalDoughSize * numberOfPizzas);
 
   useEffect(() => {
     if (totalDoughSize < 150) {
@@ -104,12 +96,12 @@ export default function Home() {
               type='range'
               name='hydration'
               value={hydration}
-              min='60'
-              max='70'
-              step={2}
+              min='0.6'
+              max='0.75'
+              step={0.01}
               className={styles.slider}
             ></input>
-            <p>{recipe.hydration}</p>
+            <p>{hydration}</p>
           </section>
         </div>
 
@@ -128,23 +120,24 @@ export default function Home() {
           <ol>
             <li>Get a food container and put it on your scale</li>
             <li>
-              Take {poolish} grams of flour and {poolish} grams of water.
+              Take {flourWeight / 5} grams of flour and {numberOfPizzas} grams
+              of water.
             </li>
             <li>
               Add a {1 * numberOfPizzas} grams of honey and instant dried yeast.
             </li>
           </ol>
-
+          <h3>On pizza day</h3>
           <ol className='style.recipe__steps'>
             <li className={styles.recipe__step}>
-              Put {recipe.waterWeight - poolish} grams of water and{" "}
-              {(numberOfPizzas * 0.1).toFixed(1)} grams of yeast into large
-              bowl.
+              Put {waterWeight} grams of water and and all the poolish/sourdough
+              into a bowl. Mix until mixture looks like pancake batter.
+              {flourWeight} of flour into a bowl and mix.
             </li>
 
             <li className={styles.recipe__step}>
-              Mix {numberOfPizzas * 3.5} grams of salt and{" "}
-              {totalDoughSize * numberOfPizzas - poolish} grams of flour
+              Mix {Math.round(numberOfPizzas * totalDoughSize * 0.028)} grams of
+              salt and {(totalDoughSize / 2) * numberOfPizzas} grams of flour
               separately and add to large bowl.
             </li>
             <li className={styles.recipe__step}>
