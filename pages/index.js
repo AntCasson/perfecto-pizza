@@ -30,7 +30,7 @@ export default function Home() {
   }, [numberOfPizzas, totalDoughSize]);
 
   const saltWeight = useMemo(() => {
-    return Math.round(numberOfPizzas * totalDoughSize * 0.028);
+    return Math.round(numberOfPizzas * totalDoughSize * 0.02);
   }, [numberOfPizzas, totalDoughSize]);
 
   useEffect(() => {
@@ -168,8 +168,8 @@ export default function Home() {
               <li className={styles.recipe__step}>
                 Put {waterWeight - flourWeight / 4} grams of water and and all
                 the poolish/sourdough into a bowl. Mix until mixture looks like
-                pancake batter.
-                {flourWeight - flourWeight / 4} of flour into a bowl and mix.
+                pancake batter. Now add {flourWeight - flourWeight / 4} grams of
+                flour into a bowl.
               </li>
               <li className={styles.recipe__step}>
                 Mix {Math.round(numberOfPizzas * totalDoughSize * 0.028)} grams
