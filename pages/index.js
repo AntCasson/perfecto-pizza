@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
     hydration: 0.6
   });
 
-  const { numberOfPizzas, totalDoughSize, pizzaSize, hydration, salt } = recipe;
+  const { numberOfPizzas, totalDoughSize, pizzaSize, hydration } = recipe;
 
   const onChange = e => {
     const name = e.target.name;
@@ -19,9 +19,19 @@ export default function Home() {
     setRecipe(prev => ({ ...prev, [name]: value }));
   };
 
-  const waterWeight = Math.round(totalDoughSize * hydration * numberOfPizzas);
-  const flourWeight = Math.round(totalDoughSize * numberOfPizzas);
-  const saltWeight = Math.round(numberOfPizzas * totalDoughSize * 0.028);
+  const waterWeight = useMemo(() => {
+    return Math.round(totalDoughSize * hydration * numberOfPizzas);
+  }, [hydration, numberOfPizzas, totalDoughSize]);
+
+  console.log(waterWeight);
+
+  const flourWeight = useMemo(() => {
+    return Math.round(totalDoughSize * numberOfPizzas);
+  }, [numberOfPizzas, totalDoughSize]);
+
+  const saltWeight = useMemo(() => {
+    return Math.round(numberOfPizzas * totalDoughSize * 0.028);
+  }, [numberOfPizzas, totalDoughSize]);
 
   useEffect(() => {
     if (totalDoughSize < 150) {
