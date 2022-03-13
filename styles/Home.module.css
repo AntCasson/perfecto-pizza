@@ -1,5 +1,5 @@
 .container {
-  background-image: var(--gradient-4);
+  background-image: var(--gradient-19);
 }
 
 .main {
@@ -19,6 +19,13 @@
   width: 100%;
   background-color: var(--dark-clr);
   clip-path: polygon(0 0, 100% 0, 100% 87%, 0 100%);
+}
+
+.layout {
+  display: grid;
+  gap: var(--size-7);
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 
 .footer {
@@ -47,35 +54,9 @@
 .title {
   margin-top: 0.35em;
   margin-bottom: 0.125em;
+  letter-spacing: var(--size-00);
   line-height: 1.2;
   font-size: 3rem;
-  background: linear-gradient(
-    -90deg,
-    var(--bg-clr),
-    var(--accent-clr),
-    var(--bg-clr),
-    var(--bg-clr)
-  );
-  background-size: 300%;
-  font-weight: 900;
-  letter-spacing: -0.125rem;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animated_text 3s ease-in-out;
-  -moz-animation: animated_text 3s ease-in-out;
-  -webkit-animation: animated_text 3s ease-in-out;
-}
-
-@keyframes animated_text {
-  0% {
-    background-position: 0px 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0px 50%;
-  }
 }
 
 .title,
@@ -84,48 +65,55 @@
   animation: var(--animation-slide-in-down);
 }
 
+.title,
+.description,
+.title__h3,
+.recipe__title {
+  color: var(--yellow-6);
+}
+
 .textAccent {
   color: var(--bg-clr);
   color: var(--);
 }
 
 .description {
-  color: var(--yellow-2);
+  color: var(--yellow-6);
   margin-top: 0.325em;
   margin-bottom: 1em;
-  font-size: 1.125rem;
+
+  font-size: 0.8rem;
 }
 
 .code {
-  padding: 0.75em;
+  color: var(--yellow-8);
   font-size: 1.1rem;
+  letter-spacing: initial;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
-.grid {
+.flex__cards {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
-  gap: 2em;
+  gap: 2rem;
 }
 
 .card {
   padding: var(--size-fluid-3);
   text-align: left;
   color: var(--light-clr);
-  min-width: 300px;
+  min-width: 200px;
   width: 300px;
   max-width: 400px;
-  height: 150px;
+  /* height: 150px; */
   text-decoration: none;
   background-color: var(--dark-clr);
   border-radius: 0.625rem;
   transition: color 0.15s ease, border-color 0.15s ease;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: var(--shadow-2);
 }
 
 .card:hover,
@@ -136,13 +124,13 @@
 
 .card h2 {
   margin: 0 0 1em 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .card p {
-  margin: 0;
+  /* margin: 0;
   font-size: 1.25rem;
-  line-height: 1.5;
+  line-height: 1.5; */
 }
 
 .logo {
@@ -150,10 +138,13 @@
   margin-inline: 0.5em;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+@media (min-width: 633px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .recipe__wrapper {
+    grid-column: 1 /-1;
   }
 }
 /* sliders  */
@@ -175,34 +166,61 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: var(--bg-clr);
+  background-color: var(--yellow-6);
   cursor: pointer;
+  animation: var(--animation-shake-x);
 }
 
 .slider::-moz-range-thumb {
   width: 20px;
   height: 20px;
+  background-color: var(--yellow-6);
   border: 0;
   border-radius: 50%;
   cursor: pointer;
+  animation: var(--animation-shake-x);
 }
 
 .slider::-webkit-slider-thumb:active {
   background-color: var(--yellow-8);
+  transform: scale(1.15);
 }
 .slider::-moz-range-thumb:active {
   background-color: var(--yellow-8);
+  transform: scale(1.15);
+}
+
+/* ingredients */
+
+.ingredients__section {
+  padding-inline: var(--size-fluid-3);
+  padding-block: var(--size-fluid-2);
+  max-width: var(--size-content-3);
+  background-color: var(--dark-clr);
+  border-radius: var(--border-size-4);
+  color: var(--yellow-0);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px var(--yellow-8) solid;
+  font-size: var(--size-4);
+}
+
+.flex:nth-last-child(1) {
+  border-bottom: none;
 }
 
 /* recipe css */
 
 .recipe__wrapper {
-  margin: var(--size-fluid-3);
+  margin-inline: var(--size-fluid-3);
   padding: var(--size-fluid-3);
   max-width: var(--size-content-3);
   background-color: var(--dark-clr);
   color: var(--yellow-0);
-  border-radius: 0.625rem;
+  border-radius: var(--border-size-4);
 }
 
 .recipe__step {
