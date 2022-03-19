@@ -149,39 +149,83 @@ export default function Home() {
             </h2>
             <p className={styles.recipe__subtitle}>
               Make poolish one day, or at least 18 hours, before you want to eat
-              the pizza pie. This gives the best and tastiest results. It's a
-              really easy step that makes your pizza pie eating experience much
-              better.
+              the pizza. It's a really easy step that makes your pizza pie
+              eating experience much better.
+              <br />
+              <br />
+              Use a nice big container that you can seal properly for the
+              poolish because it will rise about 4 times in size.
             </p>
             <h3 className={styles.title__h3}>Day before pizza prep</h3>
-            <ol>
-              <li>Get a food container and put it on your scale</li>
-              <li>
+            <ol className={styles.content__size_3}>
+              <li className={styles.recipe__step}>
+                Get a food container and put it on your scale
+              </li>
+              <li className={styles.recipe__step}>
                 Take {Math.round(flourWeight / 2.6)} grams of flour and{" "}
                 {Math.round(flourWeight / 2.6)} grams of water.
               </li>
-              <li>
+              <li className={styles.recipe__step}>
                 Add a {1 * numberOfPizzas} grams of honey and instant dried
                 yeast.
               </li>
-            </ol>
-            <h3 className={styles.title__h3}>On pizza day</h3>
-            <ol className='style.recipe__steps'>
               <li className={styles.recipe__step}>
-                Put {Math.round(waterWeight - flourWeight / 2.6)} grams of water
-                and and all the poolish/sourdough into a bowl. Mix until mixture
-                looks like pancake batter. Now add{" "}
-                {Math.round(flourWeight - flourWeight / 2.6)} grams of flour
-                into a bowl.
+                Mix with a spoon until lumps of flour are gone and leave
+                uncovered for 10 minutes.
               </li>
               <li className={styles.recipe__step}>
-                Mix {Math.round(numberOfPizzas * totalDoughSize * 0.028)} grams
-                of salt and {(totalDoughSize / 2) * numberOfPizzas} grams of
-                flour separately and add to large bowl.
+                After 10 minutes cover the container and leave at room temp for
+                1 hour.
+              </li>
+              <li className={styles.recipe__step}>
+                When the hour is over place the container in the fridge and
+                start mentally preparing for your delicious pizza tomorrow.{" "}
+              </li>
+            </ol>
+
+            <h3 className={styles.title__h3}>On pizza day</h3>
+            <p className={styles.recipe__subtitle}>
+              Take the poolish out of the fridge 1 hour before you start making
+              the dough. It takes about 4/5 hours from taking the poolish out of
+              the fridge to eating pizza.
+              <br />
+              <br />
+              It seems like a lot of effort but combined you are only 30 minutes
+              busy with the dough. Between the steps you can make pizza sauce,
+              cut your toppings and clean your kitchen.
+            </p>
+            <ol start={7} className={styles.recipe__steps}>
+              <li className={styles.recipe__step}>
+                Put {Math.round(waterWeight - flourWeight / 2.6)} grams of water
+                and {Math.round(numberOfPizzas * totalDoughSize * 0.028)} grams
+                of salt in a bowl or measuring cup and mix to dissolve.
+              </li>
+              <li className={styles.recipe__step}>
+                In a other big bowl add{" "}
+                {Math.round(flourWeight - flourWeight / 2.6)} grams of flour and
+                all the poolish you made yesterday.
               </li>
               <li className={styles.recipe__step}>
                 Mix everything together for 1 minute with big spoon or by hand.
-                Now wait for 20 minutes so that it's gets bit less sticky.
+                Now cover it with the big mixing bowl 10 minutes so that it's
+                gets bit less sticky.
+              </li>
+              <li className={styles.recipe__step}>
+                Now knead the dough for 10/15 minutes until it looks like a big
+                ball of lumpy mozzarella. Put a little bit of olive oil on one
+                hand and rub in on the dough so it won't dry out. Cover with
+                damp towel or place in big bowl/container with a lid and let it
+                rest 1 hour.
+              </li>
+              <li className={styles.recipe__step}>
+                After 1 hour make {numberOfPizzas}{" "}
+                {numberOfPizzas > 1 ? "balls" : "ball"}. Use a little bit of
+                olive oil on your hands to make the handling easier.
+              </li>
+              <li className={styles.recipe__step}>
+                Place balls about 1 fist apart from each other on a baking tray
+                or big container. Cover with plastic wrap or lid and wait for
+                dough to double in size.
               </li>
               <li className={styles.recipe__step}>
                 Now knead the dough for a 10 minutes until it looks like a big

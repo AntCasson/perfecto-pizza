@@ -1,0 +1,24 @@
+.ingredients__section {
+  margin-inline: var(--size-fluid-1);
+  padding-inline: var(--size-fluid-4);
+  padding-block-end: var(--size-fluid-3);
+  width: 100%;
+  background-color: var(--dark-clr);
+  border-radius: var(--border-size-4);
+  color: var(--yellow-0);
+}
+
+.ingredients__section h4 {
+  font-size: 2.5rem;
+}
+
+.ingredient__flex {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px var(--yellow-8) solid;
+  font-size: var(--size-4);
+}
+
+.ingredient__flex:nth-last-child(1) {
+  border-bottom: none;
+}

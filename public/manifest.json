@@ -1,12 +1,12 @@
 {
-    "theme_color": "#ffb005",
-    "background_color": "#008a45",
+    "theme_color": "#fab005",
+    "background_color": "#111111",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
     "name": "Pizza Plotter 2.0",
-    "short_name": "PiePlotter",
-    "description": "Bake pizza in just a few steps. With easy to follow recipe and hardcore mode for fanatics.",
+    "short_name": "PizzaPlotter",
+    "description": "Bake pizza in just a few steps. With easy to follow recipe you will be making a pie in no time.",
     "icons": [
         {
             "src": "/icon-192x192.png",
