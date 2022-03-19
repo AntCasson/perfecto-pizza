@@ -67,7 +67,10 @@ export default function Home() {
         <div className={styles.layout}>
           <div className={styles.flex__cards}>
             <section className={styles.card}>
-              <h2>How many pizza's? {numberOfPizzas}</h2>
+              <div className={styles.flex__between}>
+                <h2>How many pizza's?</h2>
+                <p className={styles.text__accent}>{numberOfPizzas}</p>
+              </div>
               <input
                 onChange={onChange}
                 type='range'
@@ -77,13 +80,15 @@ export default function Home() {
                 max='6'
                 className={styles.slider}
               ></input>
-              <p>{numberOfPizzas}</p>
             </section>
             <section className={styles.card}>
-              <h2>
-                What size?{totalDoughSize / 5} cm /{" "}
-                {Math.round((totalDoughSize / 5) * 0.39)} inch
-              </h2>
+              <div className={styles.flex__between}>
+                <h2>What size? </h2>
+                <p className={styles.text__accent}>
+                  {totalDoughSize / 5}cm /{" "}
+                  {Math.round((totalDoughSize / 5) * 0.39)}inch
+                </p>
+              </div>
               <input
                 onChange={onChange}
                 type='range'
@@ -94,13 +99,12 @@ export default function Home() {
                 step={5}
                 className={styles.slider}
               ></input>
-              <p>
-                {totalDoughSize / 5} cm /{" "}
-                {Math.round((totalDoughSize / 5) * 0.39)} inch
-              </p>
             </section>
             <section className={styles.card}>
-              <h2>Hydration level? {hydration * 100}%</h2>
+              <div className={styles.flex__between}>
+                <h2>Hydration level?</h2>
+                <p className={styles.text__accent}>{hydration * 100}%</p>
+              </div>
               <input
                 onChange={onChange}
                 type='range'
@@ -111,11 +115,10 @@ export default function Home() {
                 step={0.01}
                 className={styles.slider}
               ></input>
-              <p>{hydration * 100}%</p>
             </section>
           </div>
           <section className={styles.ingredients__section}>
-            <h3 className={styles.title}>Ingredients</h3>
+            <h4 className={styles.title}>Ingredients</h4>
             <div className={styles.ingredient__list}>
               <div className={styles.ingredient__flex}>
                 <p className={styles.ingredient}>Flour</p>
