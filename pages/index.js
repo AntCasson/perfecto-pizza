@@ -67,7 +67,7 @@ export default function Home() {
         <div className={styles.layout}>
           <div className={styles.flex__cards}>
             <section className={styles.card}>
-              <h2>How many pizza's?</h2>
+              <h2>How many pizza's? {numberOfPizzas}</h2>
               <input
                 onChange={onChange}
                 type='range'
@@ -80,7 +80,10 @@ export default function Home() {
               <p>{numberOfPizzas}</p>
             </section>
             <section className={styles.card}>
-              <h2>What size?</h2>
+              <h2>
+                What size?{totalDoughSize / 5} cm /{" "}
+                {Math.round((totalDoughSize / 5) * 0.39)} inch
+              </h2>
               <input
                 onChange={onChange}
                 type='range'
@@ -97,7 +100,7 @@ export default function Home() {
               </p>
             </section>
             <section className={styles.card}>
-              <h2>Hydration level?</h2>
+              <h2>Hydration level? {hydration * 100}%</h2>
               <input
                 onChange={onChange}
                 type='range'
@@ -108,35 +111,31 @@ export default function Home() {
                 step={0.01}
                 className={styles.slider}
               ></input>
-              <p>{hydration}</p>
+              <p>{hydration * 100}%</p>
             </section>
           </div>
           <section className={styles.ingredients__section}>
             <h3 className={styles.title}>Ingredients</h3>
             <div className={styles.ingredient__list}>
-              <div className={styles.flex}>
-                <p className={styles.ingredient__item}>Flour</p>
-                <p className={styles.ingredient__weight}>{flourWeight}gr</p>
+              <div className={styles.ingredient__flex}>
+                <p className={styles.ingredient}>Flour</p>
+                <p className={styles.ingredient}>{flourWeight}gr</p>
               </div>
-              <div className={styles.flex}>
-                <p className={styles.ingredient__item}>Water</p>
-                <p className={styles.ingredient__weight}>{waterWeight}gr</p>
+              <div className={styles.ingredient__flex}>
+                <p className={styles.ingredient}>Water</p>
+                <p className={styles.ingredient}>{waterWeight}gr</p>
               </div>
-              <div className={styles.flex}>
-                <p className={styles.ingredient__item}>Salt</p>
-                <p className={styles.ingredient__weight}>{saltWeight}gr</p>
+              <div className={styles.ingredient__flex}>
+                <p className={styles.ingredient}>Salt</p>
+                <p className={styles.ingredient}>{saltWeight}gr</p>
               </div>
-              <div className={styles.flex}>
-                <p className={styles.ingredient__item}>Yeast</p>
-                <p className={styles.ingredient__weight}>
-                  {1 * numberOfPizzas}gr
-                </p>
+              <div className={styles.ingredient__flex}>
+                <p className={styles.ingredient}>Yeast</p>
+                <p className={styles.ingredient}>{1 * numberOfPizzas}gr</p>
               </div>
-              <div className={styles.flex}>
-                <p className={styles.ingredient__item}>Honey/sugar</p>
-                <p className={styles.ingredient__weight}>
-                  {1 * numberOfPizzas}gr
-                </p>
+              <div className={styles.ingredient__flex}>
+                <p className={styles.ingredient}>Honey/sugar</p>
+                <p className={styles.ingredient}>{1 * numberOfPizzas}gr</p>
               </div>
             </div>
           </section>
@@ -155,8 +154,8 @@ export default function Home() {
             <ol>
               <li>Get a food container and put it on your scale</li>
               <li>
-                Take {flourWeight / 4} grams of flour and {flourWeight / 4}{" "}
-                grams of water.
+                Take {Math.round(flourWeight / 2.6)} grams of flour and{" "}
+                {Math.round(flourWeight / 2.6)} grams of water.
               </li>
               <li>
                 Add a {1 * numberOfPizzas} grams of honey and instant dried
@@ -166,10 +165,11 @@ export default function Home() {
             <h3 className={styles.title__h3}>On pizza day</h3>
             <ol className='style.recipe__steps'>
               <li className={styles.recipe__step}>
-                Put {waterWeight - flourWeight / 4} grams of water and and all
-                the poolish/sourdough into a bowl. Mix until mixture looks like
-                pancake batter. Now add {flourWeight - flourWeight / 4} grams of
-                flour into a bowl.
+                Put {Math.round(waterWeight - flourWeight / 2.6)} grams of water
+                and and all the poolish/sourdough into a bowl. Mix until mixture
+                looks like pancake batter. Now add{" "}
+                {Math.round(flourWeight - flourWeight / 2.6)} grams of flour
+                into a bowl.
               </li>
               <li className={styles.recipe__step}>
                 Mix {Math.round(numberOfPizzas * totalDoughSize * 0.028)} grams
